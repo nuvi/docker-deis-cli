@@ -8,6 +8,11 @@ RUN apk add --no-cache bash curl git jq openssh-client \
  && rm install-v2.sh \
  && INSTALLED_VERSION="`deis version`" \
  && test "$DEIS_WORKFLOW_CLI_VERSION" = stable \
-      -o "$DEIS_WORKFLOW_CLI_VERSION" = "$INSTALLED_VERSION"
+      -o "$DEIS_WORKFLOW_CLI_VERSION" = "$INSTALLED_VERSION" \
+ && set -x \
+ && VER="17.03.0-ce" \
+ && curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz \
+ && tar -xz -C /tmp -f /tmp/docker-$VER.tgz \
+ && mv /tmp/docker/* /usr/bin
 
 CMD ["deis"]
