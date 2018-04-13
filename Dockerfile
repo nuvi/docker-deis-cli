@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM alpine:3.6
 
 ARG DEIS_WORKFLOW_CLI_VERSION=v2.18.0
 RUN apk add --no-cache bash curl git jq openssh-client sudo aws-cli \
